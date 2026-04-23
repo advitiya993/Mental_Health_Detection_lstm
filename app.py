@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-import joblib
 import json
 import re
 import nltk
@@ -28,7 +27,7 @@ download_nltk()
 # ── Constants (must match training) ─────────────────────────────────────────
 MAX_LEN = 150
 
-# ── Load artefacts ───────────────────────────────────────────────────────────
+# ── Load artefacts ─────────────────────────────────────────────────────────
 @st.cache_resource
 def load_artifacts():
     # Keras LSTM model
@@ -73,7 +72,7 @@ def predict_mental_health(raw_text: str):
     class_probs = {LABEL_CLASSES[i]: float(proba[i]) for i in range(len(LABEL_CLASSES))}
     return pred_label, class_probs
 
-# ── Streamlit UI ─────────────────────────────────────────────────────────────
+# ── Streamlit UI ──────────────────────────────────────────────────────────
 def main():
     st.set_page_config(page_title="Mental Health Detector", page_icon="🧠", layout="wide")
     st.title("🧠 Mental Health Risk Detector")
@@ -82,7 +81,7 @@ def main():
     menu   = ["Home", "Monitor", "About"]
     choice = st.sidebar.selectbox("Menu", menu)
 
-    # ── Home ──────────────────────────────────────────────────────────────────
+    # ── Home ───────────────────────────────────────────────────────────
     if choice == "Home":
         st.subheader("Home — Mental Health Detection")
 
@@ -129,7 +128,7 @@ def main():
         elif submit_text:
             st.warning("Please enter some text before submitting.")
 
-    # ── Monitor ───────────────────────────────────────────────────────────────
+    # ── Monitor ──────────────────────────────────────────────────────────
     elif choice == "Monitor":
         st.subheader("📈 App Monitor")
         st.info("Model loaded successfully.")
@@ -137,7 +136,7 @@ def main():
         st.write(f"**Number of classes:** {len(LABEL_CLASSES)}")
         st.write(f"**Max sequence length:** {MAX_LEN}")
 
-    # ── About ─────────────────────────────────────────────────────────────────
+    # ── About ──────────────────────────────────────────────────────────
     else:
         st.subheader("ℹ️ About")
         st.markdown("""
