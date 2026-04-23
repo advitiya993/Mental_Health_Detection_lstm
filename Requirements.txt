@@ -1,11 +1,7 @@
-# import streamlit as st
-# import pandas as pd
-# import numpy as np
-# import joblib
-# import altair as alt
 streamlit
-pandas
+tensorflow==2.15.0
 numpy
+pandas
+scikit-learn
 joblib
 altair
-scikit-learn
