@@ -8,10 +8,9 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.preprocessing.text import tokenizer_from_json
+from keras.models import load_model
+from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import tokenizer_from_json
 
 # ── Download NLTK resources on first run ─────────────────────────────────────
 @st.cache_resource
@@ -27,7 +26,7 @@ download_nltk()
 # ── Constants (must match training) ─────────────────────────────────────────
 MAX_LEN = 150
 
-# ── Load artefacts ─────────────────────────────────────────────────────────
+# ── Load artefacts ───���─────────────────────────────────────────────────────
 @st.cache_resource
 def load_artifacts():
     # Keras LSTM model
